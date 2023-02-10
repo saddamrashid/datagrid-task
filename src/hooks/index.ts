@@ -1,3 +1,3 @@
-import useGetTransactions from "./useGetTransactions";
+import useCheckMobileView from "./useCheckMobileView";
 
-export { useGetTransactions };
+export { useCheckMobileView };

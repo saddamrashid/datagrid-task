@@ -1,10 +1,19 @@
 .App {
+  display: flex;
   text-align: center;
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.datagrid-container {
+  height: 90vh;
+  width: 80vw;
 }
 
 @media (prefers-reduced-motion: no-preference) {

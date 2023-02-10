@@ -1,10 +1,10 @@
-# Datagrid Widget React
+# Transactions Grid React Project
 
 > *Configurable widget built with [ReactJS](https://github.com/facebook/create-react-app) and Typescript*
 
 This project requires Node 14 or higher to be installed already. And a package manager such as NPM or Yarn.
 
-## Project Setup
+## Project Setup Instructions
 
 Please open up a terminal window and follow the steps mentioned below inside the project directory to run the application.
 
@@ -12,7 +12,7 @@ Please open up a terminal window and follow the steps mentioned below inside the
 - After all dependencies are installed, run the application by using `npm start` and it will open up the app in the browser.
 - We can also create a production build by running `npm run build`.
 
-## Scripts Introduction
+## Scripts Details
 
 `npm install`
 Installs all of the required dependencies by creating **node_modules** folder automatically. 

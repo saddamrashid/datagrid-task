@@ -15,7 +15,7 @@ function App() {
     <div className="App">
       <div className='datagrid-container'>
         <h5>Transactions Grid</h5>
-        <DataGrid columns={columns} title='name' subtitle='amount'/>
+        <DataGrid columns={columns} title='name' subtitle='category'/>
       </div>
     </div>
   );

@@ -10,6 +10,8 @@ interface GridProps {
     columns: ColumnsItems[];
     title?: string;
     subtitle?: string;
+    positiveNumber?: string;
+    negativeNumber?: string;
 }
 interface ColumnsItems {
     label: string;
@@ -17,9 +19,15 @@ interface ColumnsItems {
     type: string | number;
 }
 
-export const DataGrid = ({columns, title, subtitle} : GridProps) => {
+export const DataGrid = ({columns, title, subtitle, positiveNumber, negativeNumber} : GridProps) => {
     const { data: transactions, error, isLoading } = useQuery("transactionsData", getTransactions);
     const { isMobileView } = useCheckMobileView();
+
+    const customNumberRenderer = (type: string | number, value: any)=> {
+        if(type === 'number')
+            return <span style={{color: value>=0 ? positiveNumber : negativeNumber}}>{value}</span>
+        else return value
+    }
 
     const updatedColumns = useMemo(() => {
         if (isMobileView) {
@@ -29,13 +37,22 @@ export const DataGrid = ({columns, title, subtitle} : GridProps) => {
             return filteredColumns.map((column) => ({
                 name: column.key,
                 label: column.label,
+                options: { customBodyRender: (value: any)=>customNumberRenderer(column.type, value) }
             }));
         } else {
             return columns.slice(0, 2)
-            .map((column) => ({ name: column.key, label: column.label }));
+            .map((column) => ({ 
+                name: column.key,
+                label: column.label,
+                options: { customBodyRender: (value: any)=>customNumberRenderer(column.type, value) }
+            }));
         }
         } else
-        return columns.map((item) => ({ name: item.key, label: item.label }));
+        return columns.map((column) => ({ 
+            name: column.key, 
+            label: column.label,
+            options: { customBodyRender: (value: any)=>customNumberRenderer(column.type, value) }
+        }));
     }, [columns, title, subtitle, isMobileView]);
 
     if (isLoading) return <span>Loading...</span>;
